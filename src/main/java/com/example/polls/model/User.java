@@ -41,6 +41,9 @@ public class User extends DateAudit {
     @Email
     private String email;
 
+    @Size(max = 40)
+    private String status;
+
     @NotBlank
     @Size(max = 100)
     private String password;
@@ -60,6 +63,13 @@ public class User extends DateAudit {
         this.username = username;
         this.email = email;
         this.password = password;
+    }
+    public User(String name, String username, String email, String password, String status) {
+        this.name = name;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.status = status;
     }
 
     public Long getId() {
@@ -108,5 +118,13 @@ public class User extends DateAudit {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

@@ -78,10 +78,17 @@ public class AuthController {
             return new ResponseEntity(new ApiResponse(false, "Email Address already in use!"),
                     HttpStatus.BAD_REQUEST);
         }
+        User user = null;
+        if(signUpRequest.getStatus() == null) {
+            user = new User(signUpRequest.getName(), signUpRequest.getUsername(),
+                    signUpRequest.getEmail(), signUpRequest.getPassword());
+        }else {
 
-        // Creating user's account
-        User user = new User(signUpRequest.getName(), signUpRequest.getUsername(),
-                signUpRequest.getEmail(), signUpRequest.getPassword());
+            // Creating user's account
+            user = new User(signUpRequest.getName(), signUpRequest.getUsername(),
+                    signUpRequest.getEmail(), signUpRequest.getPassword(), signUpRequest.getStatus());
+        }
+
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 

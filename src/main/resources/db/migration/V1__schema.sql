@@ -4,6 +4,7 @@ CREATE TABLE `users` (
   `username` varchar(15) NOT NULL,
   `email` varchar(40) NOT NULL,
   `password` varchar(100) NOT NULL,
+  `status` varchar(20) NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
